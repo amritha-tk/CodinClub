@@ -20,6 +20,14 @@ $isFullTime) empHrs=8;;
 esac
 echo $empHrs
 }
+
+function dailyWage(){
+worker=$1
+wage=$(( worker * $Maxrateperhr ))
+echo $wage
+}
+
+
 while [[ $totalEmphrs -lt $Maxhrsinmon && $totalworkingdays -lt $Maxworkingdays ]]
 do
 ((totalworkingdays++))
@@ -27,6 +35,7 @@ totalEmphrs="$( getWorkingHrs $((RANDOM%3)) )";
 done
 totalSalary=$(($totalEmphrs*$Maxrateperhr));
 echo "Total Salary" $totalSalary
+Dailywage="$(dailyWage)"
 
 #Check Employee present or absent
  attendance=$(( RANDOM%1 +1))
