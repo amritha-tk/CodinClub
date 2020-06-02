@@ -22,8 +22,8 @@ echo $empHrs
 }
 
 function dailyWage(){
-worker=$1
-wage=$(( worker * $Maxrateperhr ))
+worker=1
+wage=$(( $worker * $Maxrateperhr ))
 echo $wage
 }
 
