@@ -5,26 +5,28 @@ echo "Welcome to Employee Wage Computation Program"
 
 isPartTime=1;
 isFullTime=2;
+Maxhrsinmon=10;
 Maxrateperhr=20;
 Maxworkingdays=20;
-empCheck=$((RANDOM%3))
 
+totalEmphrs=0;
 totalworkingdays=0;
 
-case $empCheck in
- $isPartTime) empHrs=4;;
- $isFullTime) empHrs=8;;
- *) empHrs=0;;
+function getWorkingHrs(){
+case $1 in
+$isPartTime) empHrs=4;;
+$isFullTime) empHrs=8;;
+*) empHrs=0;;
 esac
-
-while [[ $totalworkingdays -lt $Maxworkingdays ]]
- do
+echo $empHrs
+}
+while [[ $totalEmphrs -lt $Maxhrsinmon && $totalworkingdays -lt $Maxworkingdays ]]
+do
 ((totalworkingdays++))
-  salary=$(( $empHrs * $Maxrateperhr ))
-  wageinMon=$(( $salary * $Maxworkingdays ))
+totalEmphrs="$( getWorkingHrs $((RANDOM%3)) )";
 done
-  echo "Salary is "$salary
-  echo "Salary in month" $wageinMon
+totalSalary=$(($totalEmphrs*$Maxrateperhr));
+echo "Total Salary" $totalSalary
 
 #Check Employee present or absent
  attendance=$(( RANDOM%1 +1))
