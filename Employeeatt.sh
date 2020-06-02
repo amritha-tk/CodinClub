@@ -1,6 +1,9 @@
 
 #!/bin/bash -x
 
+WageperHr=20
+FulldayHr=8
+
 echo "Welcome to Employee Wage Computation Program"
 
 #Check Employee present or absent
@@ -12,3 +15,5 @@ if [ $attendance  -eq  0 ]
   else
      echo "Employee present"
 fi
+Dailywage=$(( $WageperHr * $FulldayHr ))
+echo "DailyWage of an Employee will be" $Dailywage
