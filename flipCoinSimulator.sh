@@ -1,14 +1,28 @@
 
 #!/bin/bash -x
-
-read -p "Enter number of times to flip the coin : " n
-for (( i=0; i<$n; i++ ))
-do
-rand=$(( (RANDOM %2 ) + 1 ))
-if [ $rand -eq 1 ]
- then
-  echo "...Heads..."
-else
-  echo "...Tails.."
+Head=0
+Tail=0
+for (( i=0; $Head<21 && $Tail<21; i++ ))
+ do
+  rand=$(( (RANDOM %2 ) + 1 ))
+   if [ $rand -eq 1 ]
+    then
+     echo "...Heads..."
+     ((Head++));
+    else
+     echo "...Tails.."
+     ((Tail++))
 fi
 done
+    if [[ $Head -eq $Tail ]]
+     then
+        echo "Its a Tie"
+        echo "Heads=" $Head
+        echo "Tails=" $Tail
+   elif [[ $Head -gt $Tail ]]
+    then
+      echo "Heads won by " $Head
+   else
+      echo "Tails won by " $Tail
+fi
+
