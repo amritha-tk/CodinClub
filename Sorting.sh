@@ -6,6 +6,8 @@ read a b c
 x=$(( ($a + $b) *$c ))
 y=$(( ($a * $b) +$c ))
 z=$(( $c + ($a / $b) ))
+v=$(( ($a % $b) + $c ))
 echo $x
 echo $y
 echo $z
+echo $v
