@@ -18,19 +18,21 @@ for val in "${!dict[@]}"
 done
 echo ${Arr[@]}
 
-for (( i = 0; i<${#Arr[@]}; i++ ))
- do
-  for(( j = 0; j<${#Arr[@]}; j++ ))
-   do
-    if [[ ${Arr[$j]} -lt ${Arr[$((j+1))]} ]]
-      then
-        temp=${Arr[$j]}
-        Arr[$j]=${Arr[$((j+1))]}
-        Arr[$((j+1))]=$temp
-     fi
-  done
-done
-echo "Elements after sorting in descending order"
-echo ${Arr[*]}
+for (( i = 0; i<${#Arr[@]}; i++))
+do
 
+    for(( j = 0; j<${#Arr[@]}; j++))
+    do
+
+        if [[ ${Arr[$j]} -gt ${Arr[$((j+1))]} ]]
+         then
+            # swap
+            temp=${Arr[$j]}
+            Arr[$j]=${Arr[$((j+1))]}
+            Arr[$((j+1))]=$temp
+        fi
+    done
+done
+echo "Array in sorted  ascending order :"
+echo ${Arr[*]}
 
