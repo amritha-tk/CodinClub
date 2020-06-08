@@ -16,7 +16,19 @@ fi
 done
     if [[ $Head -eq $Tail ]]
      then
-        echo "Its a Tie"
+        echo "Its a Tie ang going for 1 more flip"
+       for (( i=0; $Head<1 && $Tail<1; i++ ))
+        do
+          rand=$(( (RANDOM %2 ) + 1 ))
+           if [ $rand -eq 1 ]
+             then
+              echo "...Heads..."
+              ((Head++));
+            else
+              echo "...Tails.."
+              ((Tail++))
+            fi
+         done
         echo "Heads=" $Head
         echo "Tails=" $Tail
    elif [[ $Head -gt $Tail ]]
